@@ -4,12 +4,12 @@ O projeto consiste em desenvolver um sistema para um restaurante que gerencie as
 
 ## Alunos integrantes da equipe
 
-* João Victor Teofilo Barbosa Morais
-* Iury Taveira
-* Gustavo Campos
-* Dyogo Huann
 * Artur Amendoeira
-* João José
+* Dyogo Huann
+* Gustavo Campos
+* Iury Taveira
+* João José Cardoso Ribeiro
+* João Victor Teofilo Barbosa Morais
 
 ## Professores responsáveis
 
