@@ -6,7 +6,7 @@ Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 
 * João Victor Teofilo Barbosa Morais
 * Artur Henrique Carvalho Amendoeira
-* Nome completo do aluno 3
+* Iury Silva Taveira
 * Nome completo do aluno 4
 * Nome completo do aluno 4
 * Nome completo do aluno 4
