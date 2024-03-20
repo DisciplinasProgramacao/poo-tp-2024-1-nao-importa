@@ -5,7 +5,7 @@ Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 ## Alunos integrantes da equipe
 
 * João Victor Teofilo Barbosa Morais
-* Nome completo do aluno 2
+* Artur Henrique Carvalho Amendoeira
 * Nome completo do aluno 3
 * Nome completo do aluno 4
 * Nome completo do aluno 4
