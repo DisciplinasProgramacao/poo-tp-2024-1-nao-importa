@@ -1,0 +1,81 @@
+<Project>
+  <Name>TrabalhoPratico</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>POO</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Restaurante</Name>
+        <Access>Public</Access>
+        <Location left="149" top="62" />
+        <Size width="281" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">lista mesas4pessoas</Member>
+        <Member type="Field">lista mesas6pessoas</Member>
+        <Member type="Field">lista mesas8pessoas</Member>
+        <Member type="Field">lista requisicao</Member>
+        <Member type="Field">Fila fila</Member>
+        <Member type="Method">public string requisicaoEntrada(Requisicao cliente)</Member>
+        <Member type="Method">public string requisicaoSaida(Requisicao cliente)</Member>
+        <Member type="Method">public bool verificarDisponibilidade(int tamanhoMesa)</Member>
+        <Member type="Method">public String relatorioRequisicao()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Requisicao</Name>
+        <Access>Public</Access>
+        <Location left="137" top="377" />
+        <Size width="231" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Cliente cliente</Member>
+        <Member type="Field">int id</Member>
+        <Member type="Field">int quantAcompanhantes</Member>
+        <Member type="Field">Data dataEntrada</Member>
+        <Member type="Field">Data dataSaida</Member>
+        <Member type="Field">Hora horaEntrada</Member>
+        <Member type="Field">Hora horaSaida</Member>
+        <Member type="Method">public void entrada(Data dataEntrada, Hora horaEntrada)</Member>
+        <Member type="Method">public void saida(Data dataSaida, Hora horaSaida)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Fila</Name>
+        <Access>Public</Access>
+        <Location left="476" top="377" />
+        <Size width="231" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Requisicao fila</Member>
+        <Member type="Method">public void addCliente(Requisicao cliente)</Member>
+        <Member type="Method">public void removerCliente(Requisicao cliente)</Member>
+        <Member type="Method">public bool verificarFila(Requisicao cliente)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Mesa</Name>
+        <Access>Public</Access>
+        <Location left="811" top="377" />
+        <Size width="281" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int numMesa</Member>
+        <Member type="Field">int clienteAlocado</Member>
+        <Member type="Field">int num_pessoas</Member>
+        <Member type="Method">public string relatorio(int numMesa)</Member>
+        <Member type="Method">public void alocarCliente()</Member>
+        <Member type="Method">public void desalocarCliente()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Cliente</Name>
+        <Access>Public</Access>
+        <Location left="632" top="62" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">String nome</Member>
+        <Member type="Field">int id</Member>
+        <Member type="Field">String cpf</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+</Project>
