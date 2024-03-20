@@ -7,7 +7,7 @@
       <Entity type="Class">
         <Name>Restaurante</Name>
         <Access>Public</Access>
-        <Location left="149" top="62" />
+        <Location left="458" top="47" />
         <Size width="281" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">lista mesas4pessoas</Member>
@@ -24,11 +24,10 @@
       <Entity type="Class">
         <Name>Requisicao</Name>
         <Access>Public</Access>
-        <Location left="137" top="377" />
+        <Location left="843" top="411" />
         <Size width="231" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Cliente cliente</Member>
-        <Member type="Field">int id</Member>
         <Member type="Field">int quantAcompanhantes</Member>
         <Member type="Field">Data dataEntrada</Member>
         <Member type="Field">Data dataSaida</Member>
@@ -41,7 +40,7 @@
       <Entity type="Class">
         <Name>Fila</Name>
         <Access>Public</Access>
-        <Location left="476" top="377" />
+        <Location left="58" top="47" />
         <Size width="231" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Requisicao fila</Member>
@@ -53,7 +52,7 @@
       <Entity type="Class">
         <Name>Mesa</Name>
         <Access>Public</Access>
-        <Location left="811" top="377" />
+        <Location left="458" top="411" />
         <Size width="281" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int numMesa</Member>
@@ -67,7 +66,7 @@
       <Entity type="Class">
         <Name>Cliente</Name>
         <Access>Public</Access>
-        <Location left="632" top="62" />
+        <Location left="879" top="47" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">String nome</Member>
@@ -76,6 +75,39 @@
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
-    <Relationships />
+    <Relationships>
+      <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+    </Relationships>
   </ProjectItem>
 </Project>
