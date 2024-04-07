@@ -15,8 +15,8 @@
         <Member type="Field">lista mesas8pessoas</Member>
         <Member type="Field">lista requisicao</Member>
         <Member type="Field">Fila fila</Member>
-        <Member type="Method">public string requisicaoEntrada(Requisicao cliente)</Member>
-        <Member type="Method">public string requisicaoSaida(Requisicao cliente)</Member>
+        <Member type="Method">public string requisicaoEntrada(Requisicao cliente, DateTime dataHoraEntrada)</Member>
+        <Member type="Method">public string requisicaoSaida(Requisicao cliente, DateTime dataHoraSaida)</Member>
         <Member type="Method">public bool verificarDisponibilidade(int tamanhoMesa)</Member>
         <Member type="Method">public String relatorioRequisicao()</Member>
         <Modifier>None</Modifier>
@@ -24,17 +24,13 @@
       <Entity type="Class">
         <Name>Requisicao</Name>
         <Access>Public</Access>
-        <Location left="843" top="411" />
-        <Size width="231" height="230" />
+        <Location left="844" top="411" />
+        <Size width="324" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Cliente cliente</Member>
         <Member type="Field">int quantAcompanhantes</Member>
-        <Member type="Field">Data dataEntrada</Member>
-        <Member type="Field">Data dataSaida</Member>
-        <Member type="Field">Hora horaEntrada</Member>
-        <Member type="Field">Hora horaSaida</Member>
-        <Member type="Method">public void entrada(Data dataEntrada, Hora horaEntrada)</Member>
-        <Member type="Method">public void saida(Data dataSaida, Hora horaSaida)</Member>
+        <Member type="Method">public string entrada(Data dataEntrada, Hora horaEntrada)</Member>
+        <Member type="Method">public string saida(Data dataSaida, Hora horaSaida)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -66,43 +62,35 @@
       <Entity type="Class">
         <Name>Cliente</Name>
         <Access>Public</Access>
-        <Location left="879" top="47" />
+        <Location left="878" top="47" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">String nome</Member>
-        <Member type="Field">int id</Member>
-        <Member type="Field">String cpf</Member>
+        <Member type="Field">protected string nome</Member>
+        <Member type="Field">protected int id</Member>
+        <Member type="Field">protected string cpf</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="0" second="3">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="4">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="4">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="2">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
