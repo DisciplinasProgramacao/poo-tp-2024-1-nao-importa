@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace docs.diagramas
+namespace Restaurante
 {
     public class Fila
     {
@@ -26,5 +26,6 @@ namespace docs.diagramas
             
         }
 
+        
     }
 }

@@ -1,0 +1,25 @@
+Classe mesa:
+
+	numMesa: int (id da mesa)
+	idCliente: int (cliente alocado na mesa, mesa vazia = -1)
+	capacidade: int (capacidade da mesa)
+
+
+cliente  entra em contato no restaurante.
+
+cadastrado o cliente e gera a requisição.
+
+verifica se tem mesa com capacidade do cliente disponpível
+	requisicaoEntrada()
+		verificarDisponibiidade()
+			verificarFilaEspera()
+				ColocarNaMesa()
+				se não tiver mesa, vai para a fila espera
+
+cliente saindo:
+    requisicaoSaida()
+        retirarNaMesa()
+        verificarFilaEspera()       se tiver chamar ColocarNaMesa()    
+    
+
+
