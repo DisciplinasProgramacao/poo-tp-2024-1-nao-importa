@@ -9,14 +9,14 @@ namespace Restaurante
     class Mesa
     {
         private int numMesa;
-        private bool disponivel;
         private int capacidade;
+        protected int idCliente;
 
-        public Mesa ( int numMesa, bool disponivel, int capacidade)
+        public Mesa ( int numMesa, int capacidade)
         {
             this.numMesa = numMesa;
-            this.disponivel = disponivel;
             this.capacidade = capacidade;
+            this.idCliente = -1;
 
         }
         public string relatorio()
@@ -27,7 +27,7 @@ namespace Restaurante
         public bool verificarAdequacao( Requisicao requisicao )
         {
             bool resposta = false;
-            if ( disponivel == true && requisicao.numAcompanhante <= capacidade)
+            if ( idCliente == -1 && requisicao.qntPessoas <= capacidade)
             {
                 resposta = true;
             }
