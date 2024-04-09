@@ -8,13 +8,12 @@ namespace ClasseRequisicaoPOO
 {
     internal class Requisicao:Cliente
     {
-        private Cliente cliente;
+        
         private int quantPessoas;
 
-        public Requisicao(Cliente cliente, int quantAcompanhantes) : base(cliente.Nome, cliente.Id, cliente.Cpf)
+        public Requisicao(Cliente cliente, int quantPessoas) : base(cliente.Nome, cliente.Id, cliente.Cpf)
         {
-            this.cliente = cliente;
-            this.quantPessoas = quantAcompanhantes;
+            this.quantPessoas = quantPessoas;
         }
 
         public string entrada()
