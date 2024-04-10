@@ -19,11 +19,7 @@ namespace Restaurante
             this.idCliente = -1;
 
         }
-        public string relatorio()
-        {
-            return "teste";
-        }
-
+        
         public bool verificarAdequacao( Requisicao requisicao )
         {
             bool resposta = false;
