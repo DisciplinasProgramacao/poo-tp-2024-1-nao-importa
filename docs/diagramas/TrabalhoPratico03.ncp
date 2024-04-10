@@ -1,0 +1,99 @@
+<Project>
+  <Name>TrabalhoPratico</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>POO</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Restaurante</Name>
+        <Access>Public</Access>
+        <Location left="425" top="357" />
+        <Size width="281" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">lista&lt;Requisicao&gt; requisicao</Member>
+        <Member type="Field">Fila filaEspera</Member>
+        <Member type="Field">lista&lt;Mesa&gt; listaMesa</Member>
+        <Member type="Method">public void verificarFilaEspera()</Member>
+        <Member type="Method">public string requisicaoEntrada(Requisicao cliente, DateTime dataHoraEntrada)</Member>
+        <Member type="Method">public string requisicaoSaida(Requisicao cliente, DateTime dataHoraSaida)</Member>
+        <Member type="Method">public bool verificarDisponibilidade(int tamanhoMesa)</Member>
+        <Member type="Method">public String relatorioRequisicao()</Member>
+        <Member type="Method">public void ColocarNaMesa()</Member>
+        <Member type="Method">public void RetirarNaMesa()</Member>
+        <Member type="Method">public void criarMesa()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Requisicao</Name>
+        <Access>Public</Access>
+        <Location left="928" top="357" />
+        <Size width="324" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int qntPessoas</Member>
+        <Member type="Method">public string entrada(Data dataEntrada, Hora horaEntrada)</Member>
+        <Member type="Method">public string saida(Data dataSaida, Hora horaSaida)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Cliente</Name>
+        <Access>Public</Access>
+        <Location left="1089" top="721" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected string nome</Member>
+        <Member type="Field">protected int id</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Mesa</Name>
+        <Access>Public</Access>
+        <Location left="425" top="754" />
+        <Size width="268" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int numMesa</Member>
+        <Member type="Field">int capacidade</Member>
+        <Member type="Field">int idCliente</Member>
+        <Member type="Method">public bool verificarAdequacao(Requisicao requisicao)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Dependency" first="0" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>967</X>
+          <Y>686</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>719</X>
+          <Y>861</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
