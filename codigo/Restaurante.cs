@@ -8,6 +8,7 @@ namespace Tp
 {
     internal class Restaurante
     {
+       
         private List<string> listaRequisicao;
         private Queue<Requisicao> filaDeEspera;
         private List<Mesa> listaDeMesa;
@@ -15,37 +16,45 @@ namespace Tp
         public Restaurante()
         {
             filaDeEspera = new Queue<Requisicao>();
-
+            listaDeMesa = new List<Mesa>();
         }
-        public void requisicaoEntrada(Requisicao cliente)
-        {
+         public void requisicaoEntrada(Requisicao cliente)
+         {
  
-            if (verificarDisponibilidade() == true && verificarFilaEspera() == true)
+            if (verificarDisponibilidade(cliente) == true && verificarFilaEspera() == true)
             {
-                criarMesa(cliente);
+                ColocarNaMesa(cliente);
             }
             else
             {
                 filaDeEspera.Enqueue(cliente);
             }
 
-        }
+         }
         public void requisicaoSaida(Mesa cliente, DateTime dataHoraEntrada)
         {
-            int id = cliente.verificarID();
-            RetirarNaMesa(id);
+            int numeroMesa = cliente.verificarNumeroMesa();
+            RetirarNaMesa(numeroMesa);
             if (verificarFilaEspera() == false)
             {
                 Requisicao proximodaFila = filaDeEspera.Dequeue();
-                criarMesa(proximodaFila);
+                ColocarNaMesa(proximodaFila);
             }
-            string relatorio = "ID do cliente: " + cliente.verificarID() + " Hora de saída: " + dataHoraEntrada;
+            string relatorio = "Cliente da mesa: " + cliente.verificarNumeroMesa() + " Hora de saída: " + dataHoraEntrada;
             listaRequisicao.Add(relatorio);
         }
-        public bool verificarDisponibilidade()
+        public bool verificarDisponibilidade(Requisicao cliente)
         {
-
-            return true;
+            bool resposta = false;
+            
+            for (int i =0; i<listaDeMesa.Count;i++)
+            {
+                if (listaDeMesa[i].verificarAdequacao(cliente) == true )
+                {
+                    resposta = true;
+                }
+            }
+            return resposta;
         }
         private bool verificarFilaEspera()
         {
@@ -56,19 +65,28 @@ namespace Tp
                 resposta = true;
             }
             return resposta;
-        }
-        private void criarMesa(Requisicao Cliente)
+        }     
+        public void criarMesa(int numeroDaMesa, int capacidade)
         {
-            Mesa mesa = new Mesa();
-            ColocarNaMesa(mesa);
+            if (listaDeMesa.Count() < 10)
+            {
+                Mesa mesa = new Mesa(numeroDaMesa, capacidade);
+                listaDeMesa.Add(mesa);
+            }
+            else
+            {
+                throw new Exception("Máximo de mesa criada");
+            }
         }
-        private void ColocarNaMesa(Mesa mesa)
+        private void ColocarNaMesa(Requisicao Cliente)
         {
-            listaDeMesa.Add(mesa);
+            listaDeMesa[1].alterarID(Cliente.Id);
+          
         }
-        private void RetirarNaMesa(int id)
+
+        private void RetirarNaMesa(int numeroMesa)
         {
-            listaDeMesa.RemoveAt(id);
+            listaDeMesa.RemoveAt(numeroMesa);
         }
         public string relatorioRequisicao()
         {
