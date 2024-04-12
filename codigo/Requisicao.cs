@@ -16,18 +16,18 @@ namespace ClasseRequisicaoPOO
             this.quantPessoas = quantPessoas;
         }
 
-        public string entrada()
+        public void entrada()
         {
             DateTime dataHoraEntrada = DateTime.Now;
             Restaurante newCliente = new Restaurante();
-            return newCliente.requisicaoEntrada(this, dataHoraEntrada);
+             newCliente.requisicaoEntrada(this, dataHoraEntrada);
 
         }
-        public string saida()
+        public void saida()
         {
             DateTime dataHoraSaida = DateTime.Now;
             Restaurante newCliente = new Restaurante();
-            return newCliente.requisicaoSaida(this, dataHoraSaida);
+            newCliente.requisicaoSaida(this, dataHoraSaida);
         }
 
         public int obterQuantPessoas()
