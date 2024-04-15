@@ -11,33 +11,26 @@ namespace _11L_
 
         static void Main(string[] args)
         {
-            //Cliente c = new Cliente();
+            Cliente c;
             //Restaurante r = new Restaurante();
             //Requisucao r1 = new Requisucao();
 
-            string nome;
-            string id;
-            string cpf;
+            string nome = "";
+            int id = 1;
 
-            Console.WriteLine("Informe o nome");
-            nome = Console.ReadLine();
-            Console.WriteLine();
-            Console.WriteLine("Informe o CPF");
-            cpf = Console.ReadLine();
-
-            nome.Trim();
-            cpf.Trim();
-
-            if (cpf.Length == 11)
+            while (nome.Length <= 3)
             {
+                Console.WriteLine("Informe o nome");
+                nome = Console.ReadLine();
+                nome.Trim();
+                Console.WriteLine();
 
+                if (nome.Length > 3)
+                {
+                    c = new Cliente(nome,id);                   
+                }
             }
 
-            if (nome.Length > 3)
-            {
-
-            }
-            
             Console.ReadLine();
         }
     }
