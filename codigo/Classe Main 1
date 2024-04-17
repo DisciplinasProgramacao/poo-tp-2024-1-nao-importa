@@ -11,26 +11,59 @@ namespace _11L_
 
         static void Main(string[] args)
         {
-            Cliente c;
+            //Cliente c;
             //Restaurante r = new Restaurante();
             //Requisucao r1 = new Requisucao();
 
-            string nome = "";
             int id = 1;
+            string nome = "";
+            int opcao = 0;
 
-            while (nome.Length <= 3)
+            while(opcao >= 1 && opcao <= 4)
             {
-                Console.WriteLine("Informe o nome");
-                nome = Console.ReadLine();
-                nome.Trim();
-                Console.WriteLine();
+                Console.WriteLine("(1) Colocar Cliente na mesa ");
+                Console.WriteLine("(2) Tirar Cliente da mesa ");
+                Console.WriteLine("(3) Lista ócupação da mesa");
 
-                if (nome.Length > 3)
+                Console.WriteLine("Ler opção");
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
                 {
-                    c = new Cliente(nome,id);                   
-                }
-            }
+                    case 1:
 
+                        while (nome.Length <= 3)
+                        {
+                            Console.WriteLine("Informe o nome");
+                            nome = Console.ReadLine();
+                            nome.Trim();
+                            Console.WriteLine();
+
+                            if (nome.Length > 3)
+                            {
+                                c = new Cliente(nome, id);
+                            }
+                        }
+                        break;
+
+                    //case 2:
+
+                      //  break;
+
+                    //case 3:
+
+                      //  break;
+
+                    default:
+                        Console.Write("Inserir outra opção");
+                        break;
+                        
+                        
+                }
+
+                
+            }
+            
             Console.ReadLine();
         }
     }
