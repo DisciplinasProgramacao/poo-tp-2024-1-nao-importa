@@ -11,63 +11,60 @@ namespace _11L_
 
         static void Main(string[] args)
         {
-            //Cliente c;
+           //Cliente c;
             //Restaurante r = new Restaurante();
             //Requisucao r1 = new Requisucao();
 
             int id = 1;
             string nome = "";
-            int opcao = 0;
-            bool contLetra = true;
+            int opcao = 1;
 
-            while(opcao >= 1 && opcao <= 4)
+            while (opcao >= 1 && opcao <= 4)
             {
                 Console.WriteLine("(1) Colocar Cliente na mesa ");
                 Console.WriteLine("(2) Tirar Cliente da mesa ");
                 Console.WriteLine("(3) Liste ocupação da mesa");
                 Console.WriteLine("(4) Liste ocupação da fila");
                 Console.WriteLine("(5) Sair");
-
-                Console.WriteLine("Ler opção");
+                Console.WriteLine();
+                Console.Write("Ler opção: ");
                 opcao = int.Parse(Console.ReadLine());
+                Console.WriteLine();
 
                 switch (opcao)
                 {
                     case 1:
 
-                        while (nome.Length <= 3 && contLetra)
+                        while (nome.Length <= 3)
                         {
-                            Console.WriteLine("Informe o nome");
+                            Console.Write("Informe o nome: ");
                             nome = Console.ReadLine();
                             nome.Trim();
-                            contLetra = int.TryParse(nome, out _);
-
                             Console.WriteLine();
 
-                            if (nome.Length > 3 && contLetra)
+                            if (nome.Length > 3)
                             {
-                                c = new Cliente(nome, id);
+                                //c = new Cliente(nome, id);
                             }
-
 
                         }
                         break;
 
                     //case 2:
 
-                      //  break;
+                    //  break;
 
                     //case 3:
 
-                      //  break;
+                    //  break;
 
                     default:
                         Console.Write("°");
                         break;
-                               
-                }        
+
+                }
             }
-            
+
             Console.ReadLine();
         }
     }
