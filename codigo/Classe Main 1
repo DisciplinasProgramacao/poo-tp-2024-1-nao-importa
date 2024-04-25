@@ -11,57 +11,83 @@ namespace _11L_
 
         static void Main(string[] args)
         {
-           //Cliente c;
-            //Restaurante r = new Restaurante();
-            //Requisucao r1 = new Requisucao();
-
+           Restaurante restaurante = new Restaurante();
             int id = 1;
-            string nome = "";
             int opcao = 1;
 
-            while (opcao >= 1 && opcao <= 4)
+            while (opcao != 0)
             {
-                Console.WriteLine("(1) Colocar Cliente na mesa ");
-                Console.WriteLine("(2) Tirar Cliente da mesa ");
+                Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                Console.WriteLine("(1) Alocar Cliente ");
+                Console.WriteLine("(2) Liberar Mesa ");
                 Console.WriteLine("(3) Liste ocupação da mesa");
-                Console.WriteLine("(4) Liste ocupação da fila");
+                Console.WriteLine("(4) Olhar fila de espera ");
                 Console.WriteLine("(5) Sair");
                 Console.WriteLine();
                 Console.Write("Ler opção: ");
                 opcao = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
-                switch (opcao)
+                if (opcao == 1)
                 {
-                    case 1:
+                    string nome = "";
 
-                        while (nome.Length <= 3)
+                    while (nome.Length <= 3)
+                    {
+                        Console.Write("Informe o nome: ");
+                        nome = Console.ReadLine();
+                        nome.Trim();
+                        Console.WriteLine();
+                    }
+
+                    int quantPessoa = -1;
+
+                    while (quantPessoa < 0)
+                    {
+                        Console.Write("Informe a quantidade de pessoas : ");
+                        quantPessoa = int.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                    }
+
+                    Requisicao r = new Requisicao(restaurante, nome, id, quantPessoa);
+                    id++;
+                    r.entrada();
+                    Console.WriteLine();
+                }
+                else if (opcao == 2)
+                {
+                    Console.WriteLine(restaurante.mostrarSituacaoRestaurante());
+                    Console.WriteLine("Escolha o número da mesa que deseja libera-la");
+                    int numeroDamesa = int.Parse(Console.ReadLine());
+                    int idChave = 0;
+
+                    for(int i = 0; i < restaurante.listaDeMesa.Count; i++)
+                    {
+                        if (restaurante.listaDeMesa[i].verificarNumeroMesa() == numeroDamesa)
                         {
-                            Console.Write("Informe o nome: ");
-                            nome = Console.ReadLine();
-                            nome.Trim();
-                            Console.WriteLine();
-
-                            if (nome.Length > 3)
-                            {
-                                //c = new Cliente(nome, id);
-                            }
-
+                            idChave = restaurante.listaDeMesa[i].getIdCliente();
+                            break;
                         }
-                        break;
-
-                    //case 2:
-
-                    //  break;
-
-                    //case 3:
-
-                    //  break;
-
-                    default:
-                        Console.Write("°");
-                        break;
-
+                    }
+                    for(int i = 0; i < restaurante.listaRequisicao.Count; i++)
+                    {
+                        if (restaurante.listaRequisicao[i].getId() == idChave)
+                        {
+                            restaurante.requisicaoSaida(restaurante.listaRequisicao[i]);
+                            break;
+                        }
+                    }
+                    Console.WriteLine();
+                }
+                else if (opcao == 3)
+                {
+                    Console.WriteLine(restaurante.mostrarSituacaoRestaurante());
+                    Console.WriteLine();
+                }
+                else if (opcao == 4)
+                {
+                    Console.WriteLine(restaurante.mostrarFila());
+                    Console.WriteLine();
                 }
             }
 
