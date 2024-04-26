@@ -1,62 +1,118 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Tp
-{
+namespace ClasseRequisicaoPOO { 
     internal class Restaurante
     {
-       
-        private List<string> listaRequisicao;
-        private Queue<Requisicao> filaDeEspera;
-        private List<Mesa> listaDeMesa;
+        public List<Requisicao> listaRequisicao;
+        public List<Requisicao> filaDeEspera;
+        public List<Mesa> listaDeMesa;
 
         public Restaurante()
         {
-            filaDeEspera = new Queue<Requisicao>();
-            listaDeMesa = new List<Mesa>();
+             listaRequisicao = new List<Requisicao>();
+             filaDeEspera = new List<Requisicao>();
+             listaDeMesa = new List<Mesa>{
+              new Mesa(1,4),
+              new Mesa(2,4),
+              new Mesa(3,4),
+              new Mesa(4,4),
+              new Mesa(5,6),
+              new Mesa(6,6),
+              new Mesa(7,6),
+              new Mesa(8,6),
+              new Mesa(9,8),
+              new Mesa(10,8),
+            };
         }
-         public void requisicaoEntrada(Requisicao cliente)
-         {
- 
-            if (verificarDisponibilidade(cliente) == true && verificarFilaEspera() == true)
+
+        public string mostrarFila()
+        {
+            string retorno = "";
+            if (filaDeEspera.Count > 0)
             {
-                ColocarNaMesa(cliente);
+                for (int i = 0; i < filaDeEspera.Count; i++)
+                {
+                    retorno+= filaDeEspera[i].getNome() + " Esta na Fila \n";
+                }
+            }
+            
+            
+                return retorno;
+            
+        }
+        public string mostrarSituacaoRestaurante()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < listaDeMesa.Count; i++)
+            {
+                sb.Append("\n");
+                sb.Append("Mesa ");
+                sb.Append(listaDeMesa[i].verificarNumeroMesa());
+                sb.Append(" - capacidade ");
+                sb.Append(listaDeMesa[i].getCapacidade()+" Pessoas");
+                if (listaDeMesa[i].mesaEstaOcupada())
+                {
+                    sb.Append(" - Esta ocupada");
+                }
+                else
+                {
+                    sb.Append(" - Esta livre");
+                }
+            }
+
+            return sb.ToString();
+        }
+        
+        public void  requisicaoEntrada(Requisicao cliente)
+        {            
+            if (verificarDisponibilidade(cliente) == true)
+            {
+                if (FilaEsperaLivre() == true)
+                {
+                    Console.WriteLine(ColocarNaMesa(cliente));
+                    listaRequisicao.Add(cliente);
+
+                }
             }
             else
             {
-                filaDeEspera.Enqueue(cliente);
-            }
-
-         }
-        public void requisicaoSaida(Mesa cliente, DateTime dataHoraEntrada)
+                Console.WriteLine(colocarNaFila(cliente));
+                
+            }          
+        }
+        public void requisicaoSaida(Requisicao cliente)
         {
-            int numeroMesa = cliente.verificarNumeroMesa();
-            RetirarNaMesa(numeroMesa);
-            if (verificarFilaEspera() == false)
+            for (int i = 0; i < listaDeMesa.Count; i++)
             {
-                Requisicao proximodaFila = filaDeEspera.Dequeue();
-                ColocarNaMesa(proximodaFila);
+                if (listaDeMesa[i].getIdCliente() == cliente.getId())
+                {
+                    listaRequisicao.Remove(cliente);
+                    Console.WriteLine(RetirarNaMesa(listaDeMesa[i]));
+                    Console.WriteLine(verificarFila(listaDeMesa[i]));
+                    Console.WriteLine(relatorioRequisicao(cliente));
+                    break;
+                }
             }
-            string relatorio = "Cliente da mesa: " + cliente.verificarNumeroMesa() + " Hora de saída: " + dataHoraEntrada;
-            listaRequisicao.Add(relatorio);
         }
         public bool verificarDisponibilidade(Requisicao cliente)
         {
             bool resposta = false;
-            
-            for (int i =0; i<listaDeMesa.Count;i++)
+
+            for (int i = 0; i < listaDeMesa.Count; i++)
             {
-                if (listaDeMesa[i].verificarAdequacao(cliente) == true )
+                if (listaDeMesa[i].verificarAdequacao(cliente) == true)
                 {
                     resposta = true;
+                    break;
                 }
             }
             return resposta;
         }
-        private bool verificarFilaEspera()
+        private bool FilaEsperaLivre()
         {
             bool resposta = false;
 
@@ -65,32 +121,63 @@ namespace Tp
                 resposta = true;
             }
             return resposta;
-        }     
-        public void criarMesa(int numeroDaMesa, int capacidade)
-        {
-            if (listaDeMesa.Count() < 10)
-            {
-                Mesa mesa = new Mesa(numeroDaMesa, capacidade);
-                listaDeMesa.Add(mesa);
-            }
-            else
-            {
-                throw new Exception("Máximo de mesa criada");
-            }
         }
-        private void ColocarNaMesa(Requisicao Cliente)
+        private string ColocarNaMesa(Requisicao cliente)
         {
-            listaDeMesa[1].alterarID(Cliente.Id);
-          
+            string retorno="";
+            if (verificarDisponibilidade(cliente) == true)
+            {
+                for (int i = 0; i < listaDeMesa.Count; i++)
+                {
+                    if (listaDeMesa[i].mesaEstaOcupada() == false && listaDeMesa[i].verificarAdequacao(cliente)==true)
+                    {
+                        listaDeMesa[i].setIdCliente(cliente.getId());
+                        listaDeMesa[i].setEstaOcupada(true);
+                        retorno+= "Cliente inserido em uma mesa\n";
+                        break;
+
+                    }
+                }
+            }
+            return retorno;
+            
+            
         }
 
-        private void RetirarNaMesa(int numeroMesa)
+        private string RetirarNaMesa(Mesa mesa)
         {
-            listaDeMesa.RemoveAt(numeroMesa);
+            mesa.setEstaOcupada(false);
+            mesa.setIdCliente(-1);
+            return mesa.verificarNumeroMesa() + " Liberada\n";
         }
-        public string relatorioRequisicao()
+        public string verificarFila(Mesa mesa)
         {
-            return "teste";
+            string retorno = "";
+            for (int i = 0; i < filaDeEspera.Count; i++)
+            {
+                if (filaDeEspera[i].obterQuantPessoas() <= mesa.getCapacidade()) ;
+                {
+                    ColocarNaMesa(filaDeEspera[i]);
+                    listaRequisicao.Add(filaDeEspera[i]);
+                    retorno += filaDeEspera[i].getNome() + " foi direcionado da fila para o restaurante";
+                    filaDeEspera.RemoveAt(i); 
+                    break;
+                }
+            }
+            return retorno; ;
+        }
+        public string relatorioRequisicao(Requisicao clienteSaindo)
+        {
+            string retorno = "";
+            retorno+= "\n"+ clienteSaindo.getNome() + " saindo do restaurante \n " + "Data e hora de entrada: " + clienteSaindo.dataHoraEntrada.ToString() +
+                "\n Data e hora de saída: " + DateTime.Now.ToString();
+            return retorno;
+        }
+        public string colocarNaFila(Requisicao cliente)
+        {
+            filaDeEspera.Add(cliente);
+            return cliente.getNome() + " Direcionado para a fila";
+
         }
     }
 }
