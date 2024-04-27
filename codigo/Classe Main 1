@@ -21,6 +21,7 @@ namespace ClasseRequisicaoPOO
 
         public static void ListaDeOpcoes()
         {
+            Console.WriteLine();
             Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
             LetraCor();
             Console.WriteLine("(1) Alocar Cliente ");
