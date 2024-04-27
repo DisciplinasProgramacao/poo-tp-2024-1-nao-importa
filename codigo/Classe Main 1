@@ -9,21 +9,56 @@ namespace ClasseRequisicaoPOO
 {
     internal class Program
     {
+        public static void LetraCor()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+        }
+
+        public static void CancelarCor()
+        {
+            Console.ResetColor();
+        }
+
+        public static void ListaDeOpcoes()
+        {
+            Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+            LetraCor();
+            Console.WriteLine("(1) Alocar Cliente ");
+            Console.WriteLine("(2) Liberar Mesa ");
+            Console.WriteLine("(3) Liste ocupação da mesa");
+            Console.WriteLine("(4) Olhar fila de espera ");
+            Console.WriteLine("(5) Sair");
+            CancelarCor();
+            Console.WriteLine();
+        }
+
+        public static bool ContemNumero(string letra)
+        {
+            int i = 0;
+            bool contemNumero = false;
+
+            while (i < letra.Length)
+            {
+                if (char.IsDigit(letra[i]) == true)
+                {
+                    contemNumero = true;
+                    break;
+                }
+                i++;
+            }
+
+            return contemNumero;
+        }
+
         static void Main(string[] args)
         {
-           Restaurante restaurante = new Restaurante();
+            Restaurante restaurante = new Restaurante();
             int id = 1;
             int opcao = 1;
 
-            while (opcao != 0)
+            while (opcao != 5)
             {
-                Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
-                Console.WriteLine("(1) Alocar Cliente ");
-                Console.WriteLine("(2) Liberar Mesa ");
-                Console.WriteLine("(3) Liste ocupação da mesa");
-                Console.WriteLine("(4) Olhar fila de espera ");
-                Console.WriteLine("(5) Sair");
-                Console.WriteLine();
+                ListaDeOpcoes();
                 Console.Write("Ler opção: ");
                 opcao = int.Parse(Console.ReadLine());
                 Console.WriteLine();
@@ -32,7 +67,7 @@ namespace ClasseRequisicaoPOO
                 {
                     string nome = "";
 
-                    while (nome.Length <= 3)
+                    while (nome.Length < 3 || ContemNumero(nome) == true) 
                     {
                         Console.Write("Informe o nome: ");
                         nome = Console.ReadLine();
@@ -87,6 +122,15 @@ namespace ClasseRequisicaoPOO
                 else if (opcao == 4)
                 {
                     Console.WriteLine(restaurante.mostrarFila());
+                    Console.WriteLine();
+                }
+                else if (opcao == 5)
+                {
+                    Console.WriteLine("° Obrigado ");
+                }
+                else
+                {
+                    Console.WriteLine("    Opção Inválida");
                     Console.WriteLine();
                 }
             }
