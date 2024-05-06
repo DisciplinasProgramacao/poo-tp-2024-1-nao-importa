@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,39 +8,34 @@ namespace ClasseRequisicaoPOO
 {
     internal class Requisicao:Cliente
     {
-        private Cliente cliente;
+        
         private int quantPessoas;
+        Restaurante restaurante;
+        public DateTime dataHoraEntrada;
 
-        public Requisicao(Cliente cliente, int quantAcompanhantes) : base(cliente.Nome, cliente.Id, cliente.Cpf)
+        public Requisicao(Restaurante restaurante,string nome, int Id, int quantPessoas) : base(nome, Id)
         {
-            this.cliente = cliente;
-            this.quantPessoas = quantAcompanhantes;
+            this.restaurante = restaurante;
+            this.quantPessoas = quantPessoas;
+            this.dataHoraEntrada= DateTime.Now;
         }
 
-        public string entrada()
+        public void entrada()
         {
-            DateTime dataHoraEntrada = DateTime.Now;
-            Restaurante newCliente = new Restaurante();
-            return newCliente.requisicaoEntrada(this, dataHoraEntrada);
+             
+             restaurante.requisicaoEntrada(this);
 
         }
-        public string saida()
-        {
-            DateTime dataHoraSaida = DateTime.Now;
-            Restaurante newCliente = new Restaurante();
-            return newCliente.requisicaoSaida(this, dataHoraSaida);
-        }
-
+        
+        
         public int obterQuantPessoas()
+        {           
+             return quantPessoas;           
+        }
+        public int getId()
         {
-            if (quantPessoas > 0)
-            {
-                return quantPessoas;
-            }
-            else
-            {
-                throw new Exception("Quantidade de pessoas inváido");
-            }
+            return id;
         }
     }
 }
+
