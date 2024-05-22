@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace ClasseRequisicaoPOO { 
+namespace ClasseRequisicaoPOO
+{
     internal class Restaurante
     {
-        public List<Requisicao> listaRequisicao;
-        public List<Requisicao> filaDeEspera;
-        public List<Mesa> listaDeMesa;
+        private List<Requisicao> listaRequisicao;
+        private List<Requisicao> filaDeEspera;
+        private List<Mesa> listaDeMesa;
 
         public Restaurante()
         {
-             listaRequisicao = new List<Requisicao>();
-             filaDeEspera = new List<Requisicao>();
-             listaDeMesa = new List<Mesa>{
+            listaRequisicao = new List<Requisicao>();
+            filaDeEspera = new List<Requisicao>();
+            listaDeMesa = new List<Mesa>{
               new Mesa(1,4),
               new Mesa(2,4),
               new Mesa(3,4),
@@ -35,13 +36,13 @@ namespace ClasseRequisicaoPOO {
             {
                 for (int i = 0; i < filaDeEspera.Count; i++)
                 {
-                    retorno+= filaDeEspera[i].getNome() + " Esta na Fila \n";
+                    retorno += filaDeEspera[i].getNome() + " Esta na Fila \n";
                 }
             }
-            
-            
-                return retorno;
-            
+
+
+            return retorno;
+
         }
         public string mostrarSituacaoRestaurante()
         {
@@ -53,7 +54,7 @@ namespace ClasseRequisicaoPOO {
                 sb.Append("Mesa ");
                 sb.Append(listaDeMesa[i].verificarNumeroMesa());
                 sb.Append(" - capacidade ");
-                sb.Append(listaDeMesa[i].getCapacidade()+" Pessoas");
+                sb.Append(listaDeMesa[i].getCapacidade() + " Pessoas");
                 if (listaDeMesa[i].mesaEstaOcupada())
                 {
                     sb.Append(" - Esta ocupada");
@@ -66,9 +67,9 @@ namespace ClasseRequisicaoPOO {
 
             return sb.ToString();
         }
-        
-        public void  requisicaoEntrada(Requisicao cliente)
-        {            
+
+        public void requisicaoEntrada(Requisicao cliente)
+        {
             if (verificarDisponibilidade(cliente) == true)
             {
                 if (FilaEsperaLivre() == true)
@@ -81,8 +82,8 @@ namespace ClasseRequisicaoPOO {
             else
             {
                 Console.WriteLine(colocarNaFila(cliente));
-                
-            }          
+
+            }
         }
         public void requisicaoSaida(Requisicao cliente)
         {
@@ -94,7 +95,7 @@ namespace ClasseRequisicaoPOO {
                     Console.WriteLine(RetirarNaMesa(listaDeMesa[i]));
                     Console.WriteLine(verificarFila(listaDeMesa[i]));
                     Console.WriteLine(relatorioRequisicao(cliente));
-                    break;
+                   
                 }
             }
         }
@@ -107,7 +108,7 @@ namespace ClasseRequisicaoPOO {
                 if (listaDeMesa[i].verificarAdequacao(cliente) == true)
                 {
                     resposta = true;
-                    break;
+                    
                 }
             }
             return resposta;
@@ -124,24 +125,24 @@ namespace ClasseRequisicaoPOO {
         }
         private string ColocarNaMesa(Requisicao cliente)
         {
-            string retorno="";
+            string retorno = "";
             if (verificarDisponibilidade(cliente) == true)
             {
                 for (int i = 0; i < listaDeMesa.Count; i++)
                 {
-                    if (listaDeMesa[i].mesaEstaOcupada() == false && listaDeMesa[i].verificarAdequacao(cliente)==true)
+                    if (listaDeMesa[i].mesaEstaOcupada() == false && listaDeMesa[i].verificarAdequacao(cliente) == true)
                     {
                         listaDeMesa[i].setIdCliente(cliente.getId());
                         listaDeMesa[i].setEstaOcupada(true);
-                        retorno+= "Cliente inserido em uma mesa\n";
-                        break;
+                        retorno += "Cliente inserido em uma mesa\n";
+                      
 
                     }
                 }
             }
             return retorno;
-            
-            
+
+
         }
 
         private string RetirarNaMesa(Mesa mesa)
@@ -160,8 +161,8 @@ namespace ClasseRequisicaoPOO {
                     ColocarNaMesa(filaDeEspera[i]);
                     listaRequisicao.Add(filaDeEspera[i]);
                     retorno += filaDeEspera[i].getNome() + " foi direcionado da fila para o restaurante";
-                    filaDeEspera.RemoveAt(i); 
-                    break;
+                    filaDeEspera.RemoveAt(i);
+                   
                 }
             }
             return retorno; ;
@@ -169,7 +170,7 @@ namespace ClasseRequisicaoPOO {
         public string relatorioRequisicao(Requisicao clienteSaindo)
         {
             string retorno = "";
-            retorno+= "\n"+ clienteSaindo.getNome() + " saindo do restaurante \n " + "Data e hora de entrada: " + clienteSaindo.dataHoraEntrada.ToString() +
+            retorno += "\n" + clienteSaindo.getNome() + " saindo do restaurante \n " + "Data e hora de entrada: " + clienteSaindo.dataHoraEntrada.ToString() +
                 "\n Data e hora de saída: " + DateTime.Now.ToString();
             return retorno;
         }
@@ -181,4 +182,3 @@ namespace ClasseRequisicaoPOO {
         }
     }
 }
-
