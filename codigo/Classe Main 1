@@ -9,9 +9,14 @@ namespace ClasseRequisicaoPOO
 {
     internal class Program
     {
-        public static void LetraCor()
+       public static void LetraCor()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
+        }
+
+        public static void LetraCor1()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
         }
 
         public static void CancelarCor()
@@ -32,6 +37,20 @@ namespace ClasseRequisicaoPOO
             CancelarCor();
             Console.WriteLine();
         }
+
+        //public static bool ContemLetra()
+        //{
+        //    bool contemLetra = int.TryParse(letra, out numero);
+
+        //    if (contemLetra == true)
+        //    {
+        //        Console.WriteLine("Não Contem Letra");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Contem Letra");
+        //    }
+        //}
 
         public static bool ContemNumero(string letra)
         {
@@ -80,6 +99,37 @@ namespace ClasseRequisicaoPOO
             return quantPessoa;
         }
 
+        public static void Bebida()
+        {
+            Console.WriteLine();
+            Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+            LetraCor1();
+            Console.WriteLine("(1) Água – R$ 3 ");
+            Console.WriteLine("(2) Copo de suco – R$ 7 ");
+            Console.WriteLine("(3) Refrigerante orgânico – R$ 7 ");
+            Console.WriteLine("(4) Cerveja vegana – R$ 9 ");
+            Console.WriteLine("(5) Taça de vinho vegano – R$ 18 ");
+            Console.WriteLine("(0) Nenhuma Bebida");
+            CancelarCor();
+            Console.WriteLine();
+        }
+
+        public static void Comida()
+        {
+            Console.WriteLine();
+            Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+            LetraCor1();
+            Console.WriteLine("(1) Moqueca de Palmito – R$ 32 ");
+            Console.WriteLine("(2) Falafel Assado – R$ 20 ");
+            Console.WriteLine("(3) Salada Primavera com Macarrão Konjac – R$ 25 ");
+            Console.WriteLine("(4) Escondidinho de Inhame – R$ 18 ");
+            Console.WriteLine("(5) Strogonoff de Cogumelos – R$ 35 ");
+            Console.WriteLine("(6) Caçarola de legumes – R$ 22 ");
+            Console.WriteLine("(0) Nenhuma Comida");
+            CancelarCor();
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
             Restaurante restaurante = new Restaurante();
@@ -99,7 +149,8 @@ namespace ClasseRequisicaoPOO
 
                         string nome = InformeNome();
                         int quantPessoa = InformeQuantidadeDePessoa();
-
+                        Bebida();
+                        Comida();
                         Requisicao r = new Requisicao(restaurante, nome, id, quantPessoa);
                         id++;
                         r.entrada();
