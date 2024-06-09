@@ -12,12 +12,14 @@ namespace ClasseRequisicaoPOO
         private int quantPessoas;
         Restaurante restaurante;
         public DateTime dataHoraEntrada;
+        public Pedido pedido;
 
         public Requisicao(Restaurante restaurante,string nome, int Id, int quantPessoas) : base(nome, Id)
         {
             this.restaurante = restaurante;
             this.quantPessoas = quantPessoas;
             this.dataHoraEntrada= DateTime.Now;
+            pedido= new Pedido();
         }
 
         public void entrada()
