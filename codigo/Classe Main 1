@@ -9,206 +9,162 @@ namespace ClasseRequisicaoPOO
 {
     internal class Program
     {
-       public static void LetraCor()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-        }
-
-        public static void LetraCor1()
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-        }
-
-        public static void CancelarCor()
-        {
-            Console.ResetColor();
-        }
-
-        public static void ListaDeOpcoes()
-        {
-            Console.WriteLine();
-            Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
-            LetraCor();
-            Console.WriteLine("(1) Alocar Cliente ");
-            Console.WriteLine("(2) Liberar Mesa ");
-            Console.WriteLine("(3) Liste ocupação da mesa");
-            Console.WriteLine("(4) Olhar fila de espera ");
-            Console.WriteLine("(5) Sair");
-            CancelarCor();
-            Console.WriteLine();
-        }
-
-        //public static bool ContemLetra()
-        //{
-        //    bool contemLetra = int.TryParse(letra, out numero);
-
-        //    if (contemLetra == true)
-        //    {
-        //        Console.WriteLine("Não Contem Letra");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Contem Letra");
-        //    }
-        //}
-
-        public static bool ContemNumero(string letra)
-        {
-            int i = 0;
-            bool contemNumero = false;
-
-            while (i < letra.Length)
-            {
-                if (char.IsDigit(letra[i]) == true)
-                {
-                    contemNumero = true;
-                    break;
-                }
-                i++;
-            }
-
-            return contemNumero;
-        }
-
-        public static string InformeNome()
-        {
-            string nome = "";
-
-            while (nome.Length < 3 || ContemNumero(nome) == true)
-            {
-                Console.Write("Informe o nome: ");
-                nome = Console.ReadLine();
-                nome.Trim();
-                Console.WriteLine();
-            }
-
-            return nome;
-        }
-
-        public static int InformeQuantidadeDePessoa()
-        {
-            int quantPessoa = -1;
-
-            while (quantPessoa <= 0)
-            {
-                Console.Write("Informe a quantidade de pessoas : ");
-                quantPessoa = int.Parse(Console.ReadLine());
-                Console.WriteLine();
-            }
-
-            return quantPessoa;
-        }
-
-        public static void Bebida()
-        {
-            Console.WriteLine();
-            Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
-            LetraCor1();
-            Console.WriteLine("(1) Água – R$ 3 ");
-            Console.WriteLine("(2) Copo de suco – R$ 7 ");
-            Console.WriteLine("(3) Refrigerante orgânico – R$ 7 ");
-            Console.WriteLine("(4) Cerveja vegana – R$ 9 ");
-            Console.WriteLine("(5) Taça de vinho vegano – R$ 18 ");
-            Console.WriteLine("(0) Nenhuma Bebida");
-            CancelarCor();
-            Console.WriteLine();
-        }
-
-        public static void Comida()
-        {
-            Console.WriteLine();
-            Console.WriteLine("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
-            LetraCor1();
-            Console.WriteLine("(1) Moqueca de Palmito – R$ 32 ");
-            Console.WriteLine("(2) Falafel Assado – R$ 20 ");
-            Console.WriteLine("(3) Salada Primavera com Macarrão Konjac – R$ 25 ");
-            Console.WriteLine("(4) Escondidinho de Inhame – R$ 18 ");
-            Console.WriteLine("(5) Strogonoff de Cogumelos – R$ 35 ");
-            Console.WriteLine("(6) Caçarola de legumes – R$ 22 ");
-            Console.WriteLine("(0) Nenhuma Comida");
-            CancelarCor();
-            Console.WriteLine();
-        }
-
         static void Main(string[] args)
         {
             Restaurante restaurante = new Restaurante();
-            int id = 1;
             int opcao = 1;
-
-            while (opcao != 5)
+            int id = 1;
+            while (opcao != 0)
             {
-                ListaDeOpcoes();
-                Console.Write("Ler opção: ");
-                opcao = int.Parse(Console.ReadLine());
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine("Bem-vindo ao restaurante!");
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine("1. Chegada de Cliente");
+                Console.WriteLine("2. Liberar Mesa");
+                Console.WriteLine("3. Ver situação das mesas");
+                Console.WriteLine("4. Ver fila de espera");
+                Console.WriteLine("5. Adicionar item a um pedido");
+                Console.WriteLine("0. Sair");
+                Console.WriteLine("-------------------------------------");
                 Console.WriteLine();
-                 
-                switch (opcao)
+                Console.Write("Escolha uma opção: ");
+                Console.WriteLine();
+                opcao = int.Parse(Console.ReadLine());
+                Console.Clear();
+                if(opcao == 1)
                 {
-                    case 1:
+                    Console.WriteLine("Infome o nome do cliente");
+                    string nome = Console.ReadLine();
+                    Console.WriteLine("Informe a quantidade de pessoas totais");
+                    int quantPessoas = int.Parse(Console.ReadLine());
+                    Requisicao newCliente = new Requisicao(restaurante, nome,id, quantPessoas);
+                    id++;
+                    newCliente.entrada();
+                    Console.WriteLine();
+                    
 
-                        string nome = InformeNome();
-                        int quantPessoa = InformeQuantidadeDePessoa();
-                        Bebida();
-                        Comida();
-                        Requisicao r = new Requisicao(restaurante, nome, id, quantPessoa);
-                        id++;
-                        r.entrada();
-                        Console.WriteLine();
-                        break;
 
-                    case 2:
+                } 
+                else if (opcao == 2)
+                {
+                    Console.WriteLine("Escolha o número da mesa para libera-la");
+                    Console.WriteLine(restaurante.mostrarSituacaoRestaurante());                    
+                    int numDaMesa= int.Parse(Console.ReadLine());
+                    int numChave = 0;
+                    for (int i = 0; i < restaurante.listaDeMesa.Count; i++)
+                    {
+                        if (restaurante.listaDeMesa[i].verificarNumeroMesa() == numDaMesa )
+                        {
+                             numChave = restaurante.listaDeMesa[i].getIdCliente();
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < restaurante.listaRequisicao.Count; i++)
+                    {
+                        if (restaurante.listaRequisicao[i].getId() == numChave)
+                        {
+                            restaurante.requisicaoSaida(restaurante.listaRequisicao[i]);
+                            break;
+                        }
+                    }
+                    Console.WriteLine();
 
-                        Console.WriteLine(restaurante.mostrarSituacaoRestaurante());
-                        Console.WriteLine("Escolha o número da mesa que deseja libera-la");
-                        int numeroDamesa = int.Parse(Console.ReadLine());
-                        int idChave = 0;
+                }
+                else if(opcao==3)
+                {
+                    Console.Clear();
+                    Console.WriteLine(restaurante.mostrarSituacaoRestaurante());
+                    Console.WriteLine(" ");
+                }
+                else if(opcao == 4)
+                {
+                    Console.Clear();
+                    Console.WriteLine(restaurante.mostrarFila());
+                    Console.WriteLine(" ") ;
+                }
+                else if (opcao == 5)
+                {
+                    Console.WriteLine("1- Comida\n2- Bebida");
+                    int comidaOubebida= int.Parse(Console.ReadLine());
+                    Console.Clear();
 
+                    if (comidaOubebida == 1)
+                    {
+                        Console.WriteLine("Comidas:\r\n 1. Moqueca de Palmito – R$ 32\r\n 2. Falafel Assado – R$ 20\r\n 3. Salada Primavera com Macarrão Konjac – R$ 25\r\n 4. Escondidinho de Inhame – R$ 18\r\n 5. Strogonoff de Cogumelos – R$ 35\r\n 6. Caçarola de legumes – R$ 22");
+                    }
+                    else
+                    {
+                        Console.WriteLine(" Bebidas:\r\n 1. Água – R$ 3\r\n 2. Copo de suco – R$ 7\r\n 3. Refrigerante orgânico – R$ 7\r\n 4. Cerveja vegana – R$ 9\r\n 5. Taça de vinho vegano – R$ 18");
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine("Esolha o item");
+                    int escolhaItem=int.Parse(Console.ReadLine());
+                    Console.Clear();
+
+
+
+                    if (comidaOubebida == 1)
+                    {
+                        Console.WriteLine("Mostrando situação do restaurante (comida)");
+                        Console.WriteLine("Qual mesa?");
+                        Console.WriteLine("-------------------------------------");
+                        Console.WriteLine(restaurante.mostrarSituacaoRestaurante());                       
+                        int optionMesa = int.Parse(Console.ReadLine());
+                        Console.Clear();
+                        
                         for (int i = 0; i < restaurante.listaDeMesa.Count; i++)
                         {
-                            if (restaurante.listaDeMesa[i].verificarNumeroMesa() == numeroDamesa)
+                            if (restaurante.listaDeMesa[i].verificarNumeroMesa() == optionMesa)
                             {
-                                idChave = restaurante.listaDeMesa[i].getIdCliente();
+                                optionMesa = restaurante.listaDeMesa[i].getIdCliente();
                                 break;
                             }
                         }
                         for (int i = 0; i < restaurante.listaRequisicao.Count; i++)
                         {
-                            if (restaurante.listaRequisicao[i].getId() == idChave)
+                            if (restaurante.listaRequisicao[i].getId() == optionMesa)
                             {
-                                restaurante.requisicaoSaida(restaurante.listaRequisicao[i]);
+                                restaurante.listaRequisicao[i].pedido.adicionarItem(new Comida(escolhaItem));
                                 break;
                             }
                         }
-                        Console.WriteLine();
-                        break;
-
-                    case 3:
-
+                        Console.Clear();
+                        Console.WriteLine("Item adicionado");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Mostrando situação do restaurante (bebida)");
+                        Console.WriteLine("Qual mesa?");
+                        Console.WriteLine("-------------------------------------");
                         Console.WriteLine(restaurante.mostrarSituacaoRestaurante());
-                        Console.WriteLine();
+                        int optionMesa = int.Parse(Console.ReadLine());
+                        
+                        Console.Clear();
+                        for (int i = 0; i < restaurante.listaDeMesa.Count; i++)
+                        {
+                            if (restaurante.listaDeMesa[i].verificarNumeroMesa() == optionMesa)
+                            {
+                                optionMesa = restaurante.listaDeMesa[i].getIdCliente();
+                                break;
+                            }
+                        }
+                        for (int i = 0; i < restaurante.listaRequisicao.Count; i++)
+                        {
+                            if (restaurante.listaRequisicao[i].getId() == optionMesa)
+                            {
+                                restaurante.listaRequisicao[i].pedido.adicionarItem(new Bebida(escolhaItem));
+                                break;
+                            }
+                        }
+                        Console.Clear();
+                        Console.WriteLine("Item adicionado");
+                    }
+                    
 
-                        break;
-
-                    case 4:
-
-                        Console.WriteLine(restaurante.mostrarFila());
-                        Console.WriteLine();
-                        break;
-
-                    case 5:
-
-                        Console.WriteLine("° Obrigado ");
-                        break;
-
-                    default:
-
-                        Console.WriteLine("    Opção Inválida");
-                        Console.WriteLine();
-                        break;
                 }
+                
+                
             }
-
             Console.ReadLine();
         }
     }
