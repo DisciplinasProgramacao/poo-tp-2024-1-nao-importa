@@ -1,10 +1,11 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Restaurante
+namespace ClasseRequisicaoPOO
 {
      internal class Mesa
     {
@@ -12,6 +13,7 @@ namespace Restaurante
         private int capacidade;
         private int idCliente;
         private bool estaOcupada;
+        public Requisicao clienteSentado;
 
         public Mesa(int numMesa, int capacidade)
         {
@@ -19,8 +21,7 @@ namespace Restaurante
             this.capacidade = capacidade;
             this.idCliente = -1;
             this.estaOcupada = false;
-
-
+           
         }
         public int verificarNumeroMesa()
         {
