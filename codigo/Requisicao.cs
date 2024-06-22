@@ -13,6 +13,7 @@ namespace ClasseRequisicaoPOO
         Restaurante restaurante;
         public DateTime dataHoraEntrada;
         public Pedido pedido;
+        Cafeteria Cafeteria;
 
         public Requisicao(Restaurante restaurante,string nome, int Id, int quantPessoas) : base(nome, Id)
         {
@@ -21,12 +22,22 @@ namespace ClasseRequisicaoPOO
             this.dataHoraEntrada= DateTime.Now;
             pedido= new Pedido();
         }
+        public Requisicao(Cafeteria cafeteria,string nome, int Id):base(nome, Id) 
+        {
+            this.Cafeteria = cafeteria;
+            this.dataHoraEntrada = DateTime.Now;
+            pedido = new Pedido();
+        }
 
         public void entrada()
         {
              
              restaurante.requisicaoEntrada(this);
 
+        }
+        public void entradaCafeteria()
+        {
+            Cafeteria.requisicaoEntrada(this);
         }
         
         
@@ -40,4 +51,3 @@ namespace ClasseRequisicaoPOO
         }
     }
 }
-
