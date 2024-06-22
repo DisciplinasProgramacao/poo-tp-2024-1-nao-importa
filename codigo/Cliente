@@ -23,10 +23,12 @@ namespace ClasseRequisicaoPOO
         {
             return nome;
         }
+        public int getId() {
+            return id;
+        }    
         
 
 
 
     }
 }
-
