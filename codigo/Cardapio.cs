@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace ClasseRequisicaoPOO
 {
-    internal class Item
+    internal class Cardapio
     {
         protected int valor;
         protected string nome;
         
         public int getValor()
         {
-            return valor;
-            
+            return valor;            
         }
         public string getNome() {
             return nome;
