@@ -1,22 +1,21 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace ClasseRequisicaoPOO { 
-    internal class Restaurante
+namespace ClasseRequisicaoPOO
+{
+    internal class Restaurante: Estabelecimento
     {
-        
         public List<Requisicao> listaRequisicao;
         public List<Requisicao> filaDeEspera;
         public List<Mesa> listaDeMesa;
 
         public Restaurante()
         {
-             listaRequisicao = new List<Requisicao>();
-             filaDeEspera = new List<Requisicao>();
-             listaDeMesa = new List<Mesa>{
+            listaRequisicao = new List<Requisicao>();
+            filaDeEspera = new List<Requisicao>();
+            listaDeMesa = new List<Mesa>{
               new Mesa(1,4),
               new Mesa(2,4),
               new Mesa(3,4),
@@ -37,51 +36,54 @@ namespace ClasseRequisicaoPOO {
             {
                 for (int i = 0; i < filaDeEspera.Count; i++)
                 {
-                    retorno+= filaDeEspera[i].getNome() + " Esta na Fila \n";
+                    retorno += filaDeEspera[i].getNome() + " Esta na Fila \n";
                 }
             }
             else
             {
-                retorno = "Fila vazia"; 
+                retorno = "Fila vazia";
             }
-            
-            
-                return retorno;
-            
+
+
+            return retorno;
+
         }
-        public string mostrarSituacaoRestaurante()
+
+        public override string mostrarSituacao()
         {
             StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < listaDeMesa.Count; i++)
+            var mesasUnicas = listaDeMesa.GroupBy(m => m.verificarNumeroMesa())
+                                         .Select(g => g.First())
+                                         .ToList();
+
+            for (int i = 0; i < mesasUnicas.Count; i++)
             {
-                sb.Append("\n");
-                sb.Append("Mesa  ----- ");
-                sb.Append(listaDeMesa[i].verificarNumeroMesa());
+                sb.Append("\nMesa ----- ");
+                sb.Append(mesasUnicas[i].verificarNumeroMesa());
                 sb.Append(" - capacidade ");
-                sb.Append(listaDeMesa[i].getCapacidade() + " Pessoas");
-                if (listaDeMesa[i].mesaEstaOcupada())
+                sb.Append(mesasUnicas[i].getCapacidade() + " Pessoas");
+
+                if (mesasUnicas[i].mesaEstaOcupada())
                 {
-                    sb.Append(" - Esta ocupada");
-                    sb.Append('\n');
-                    sb.Append(listaDeMesa[i].clienteSentado.pedido.relatorio());                    
+                    sb.Append(" - Esta ocupada\n");
+                    sb.Append(mesasUnicas[i].clienteSentado.pedido.relatorio());
                 }
                 else
                 {
                     sb.Append(" - Esta livre");
                 }
-                sb.Append('\n');
 
+                sb.Append('\n');
             }
-        
-            
 
             return sb.ToString();
-            
         }
-        
-        public void  requisicaoEntrada(Requisicao cliente)
-        {            
+
+
+
+        public override void requisicaoEntrada(Requisicao cliente)
+        {
             if (verificarDisponibilidade(cliente) == true)
             {
                 if (FilaEsperaLivre() == true)
@@ -94,10 +96,10 @@ namespace ClasseRequisicaoPOO {
             else
             {
                 Console.WriteLine(colocarNaFila(cliente));
-                
-            }          
+
+            }
         }
-        public void requisicaoSaida(Requisicao cliente)
+        public override void requisicaoSaida(Requisicao cliente)
         {
             for (int i = 0; i < listaDeMesa.Count; i++)
             {
@@ -137,25 +139,25 @@ namespace ClasseRequisicaoPOO {
         }
         private string ColocarNaMesa(Requisicao cliente)
         {
-            string retorno="";
+            string retorno = "";
             if (verificarDisponibilidade(cliente) == true)
             {
                 for (int i = 0; i < listaDeMesa.Count; i++)
                 {
-                    if (listaDeMesa[i].mesaEstaOcupada() == false && listaDeMesa[i].verificarAdequacao(cliente)==true)
+                    if (listaDeMesa[i].mesaEstaOcupada() == false && listaDeMesa[i].verificarAdequacao(cliente) == true)
                     {
                         listaDeMesa[i].setIdCliente(cliente.getId());
                         listaDeMesa[i].setEstaOcupada(true);
-                        listaDeMesa[i].clienteSentado = cliente; 
-                        retorno+= "Cliente inserido em uma mesa\n";
+                        listaDeMesa[i].clienteSentado = cliente;
+                        retorno += "Cliente inserido em uma mesa\n";
                         break;
 
                     }
                 }
             }
             return retorno;
-            
-            
+
+
         }
 
         private string RetirarNaMesa(Mesa mesa)
@@ -174,16 +176,16 @@ namespace ClasseRequisicaoPOO {
                     ColocarNaMesa(filaDeEspera[i]);
                     listaRequisicao.Add(filaDeEspera[i]);
                     retorno += filaDeEspera[i].getNome() + " foi direcionado da fila para o restaurante";
-                    filaDeEspera.RemoveAt(i); 
+                    filaDeEspera.RemoveAt(i);
                     break;
                 }
             }
-            return retorno; 
+            return retorno;
         }
-        public string relatorioRequisicao(Requisicao clienteSaindo)
+        public override string relatorioRequisicao(Requisicao clienteSaindo)
         {
             string retorno = "";
-            retorno+= "\n"+ clienteSaindo.getNome() + " saindo do restaurante \n " + "Data e hora de entrada: " + clienteSaindo.dataHoraEntrada.ToString() +
+            retorno += "\n" + clienteSaindo.getNome() + " saindo do restaurante \n " + "Data e hora de entrada: " + clienteSaindo.dataHoraEntrada.ToString() +
                 "\n Data e hora de saída: " + DateTime.Now.ToString();
             return retorno;
         }
@@ -193,9 +195,9 @@ namespace ClasseRequisicaoPOO {
             return cliente.getNome() + " Direcionado para a fila";
 
         }
-        public string fecharConta(Requisicao cliente)
+        public override string fecharConta(Requisicao cliente)
         {
-           return  cliente.pedido.relatorio();
+            return cliente.pedido.relatorio();
         }
     }
 }
