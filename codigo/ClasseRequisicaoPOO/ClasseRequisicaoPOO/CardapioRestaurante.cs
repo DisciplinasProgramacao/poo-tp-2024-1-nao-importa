@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ClasseRequisicaoPOO
 {
-    internal class Comida : Item
+    internal class CardapioRestaurante : Cardapio
     {
         private int selecionado;
 
-        public Comida(int selecionado)
+        public CardapioRestaurante(int selecionado)
         {
             this.selecionado = selecionado;
             switch (selecionado)
@@ -39,6 +39,27 @@ namespace ClasseRequisicaoPOO
                 case 6:
                     nome = "Caçarola de legumes";
                     valor = 22;
+                    break;
+                case 7:
+                
+                    nome = "Água";
+                    valor = 3;
+                    break;
+                case 8:
+                    nome = "Copo de suco";
+                    valor = 7;
+                    break;
+                case 9:
+                    nome = "Refrigerante ogranico";
+                    valor = 7;
+                    break;
+                case 10:
+                    nome = "Cerveja veganda";
+                    valor = 9;
+                    break;
+                case 11:
+                    nome = "Taça de vinho vegano";
+                    valor = 18;
                     break;
 
 

@@ -1,0 +1,14 @@
+C:\Users\55379\Desktop\Projetos Faculdade\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\bin\Debug\ClasseRequisicaoPOO.exe.config
+C:\Users\55379\Desktop\Projetos Faculdade\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\bin\Debug\ClasseRequisicaoPOO.exe
+C:\Users\55379\Desktop\Projetos Faculdade\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\bin\Debug\ClasseRequisicaoPOO.pdb
+C:\Users\55379\Desktop\Projetos Faculdade\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\obj\Debug\ClasseRequisicaoPOO.csproj.AssemblyReference.cache
+C:\Users\55379\Desktop\Projetos Faculdade\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\obj\Debug\ClasseRequisicaoPOO.csproj.CoreCompileInputs.cache
+C:\Users\55379\Desktop\Projetos Faculdade\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\obj\Debug\ClasseRequisicaoPOO.exe
+C:\Users\55379\Desktop\Projetos Faculdade\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\obj\Debug\ClasseRequisicaoPOO.pdb
+C:\Users\55379\Desktop\Projetos Faculdade\Terceiro Periodo\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\bin\Debug\ClasseRequisicaoPOO.exe.config
+C:\Users\55379\Desktop\Projetos Faculdade\Terceiro Periodo\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\bin\Debug\ClasseRequisicaoPOO.exe
+C:\Users\55379\Desktop\Projetos Faculdade\Terceiro Periodo\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\bin\Debug\ClasseRequisicaoPOO.pdb
+C:\Users\55379\Desktop\Projetos Faculdade\Terceiro Periodo\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\obj\Debug\ClasseRequisicaoPOO.csproj.AssemblyReference.cache
+C:\Users\55379\Desktop\Projetos Faculdade\Terceiro Periodo\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\obj\Debug\ClasseRequisicaoPOO.csproj.CoreCompileInputs.cache
+C:\Users\55379\Desktop\Projetos Faculdade\Terceiro Periodo\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\obj\Debug\ClasseRequisicaoPOO.exe
+C:\Users\55379\Desktop\Projetos Faculdade\Terceiro Periodo\POO\ClasseRequisicaoPOO\ClasseRequisicaoPOO\obj\Debug\ClasseRequisicaoPOO.pdb
