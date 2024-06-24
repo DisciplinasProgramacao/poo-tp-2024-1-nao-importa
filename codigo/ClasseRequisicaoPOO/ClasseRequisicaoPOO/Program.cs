@@ -6,10 +6,43 @@ namespace ClasseRequisicaoPOO
 {
     internal class Program
     {
+        public static void ItemCafe()
+        {
+            Console.WriteLine("Comida:");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" 1. Pão de queijo – R$ 5\n 2. Bolinha de cogumelo – R$ 7\n 3. Rissole de palmito – R$ 7\n 4. Coxinha de carne de jaca – R$ 4\n 5. Fatia de queijo de caju – R$ 9\n 6. Biscoito amanteigado – R$ 3\n 7. Cheesecake de frutas vermelhas - R$ 15");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine("Bebidas:");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" 8. Água – R$ 3\n 9. Copo de suco – R$ 7\n 10. Café espresso orgânico R$ 6");
+            Console.ResetColor();
+        }
+
+        public static void ItemRestaurante()
+        {
+            Console.WriteLine("Comida:");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" 1. Moqueca de Palmito – R$ 32\n 2. Falafel Assado – R$ 20\n 3. Salada Primavera com Macarrão Konjac – R$ 25\n 4. Escondidinho de Inhame – R$ 18\n 5. Strogonoff de Cogumelos – R$ 35\n 6. Caçarola de legumes – R$ 22");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine("Bebidas:");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" 7. Água – R$ 3\n 8. Copo de suco – R$ 7\n 9. Refrigerante orgânico – R$ 7\n 10. Cerveja vegana – R$ 9\n 11. Taça de vinho vegano – R$ 18");
+            Console.ResetColor();
+        }
+
         static void menuRestaurante()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("-------------------------------------");
+            Console.ResetColor();
             Console.WriteLine("Bem-vindo ao restaurante!");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("-------------------------------------");
             Console.WriteLine("1. Chegada de Cliente");
             Console.WriteLine("2. Liberar Mesa");
@@ -18,6 +51,7 @@ namespace ClasseRequisicaoPOO
             Console.WriteLine("5. Adicionar item a um pedido");
             Console.WriteLine("0. Sair");
             Console.WriteLine("-------------------------------------");
+            Console.ResetColor();
             Console.WriteLine();
             Console.Write("Escolha uma opção: ");
             Console.WriteLine();
@@ -25,8 +59,11 @@ namespace ClasseRequisicaoPOO
 
         static void menuCafe()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("-------------------------------------");
+            Console.ResetColor();
             Console.WriteLine("Bem-vindo à Cafeteria!");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("-------------------------------------");
             Console.WriteLine("1. Chegada de Cliente");
             Console.WriteLine("2. Fechar conta de cliente");
@@ -34,6 +71,7 @@ namespace ClasseRequisicaoPOO
             Console.WriteLine("4. Adicionar item a um pedido");
             Console.WriteLine("0. Sair");
             Console.WriteLine("-------------------------------------");
+            Console.ResetColor();
             Console.WriteLine();
             Console.Write("Escolha uma opção: ");
             Console.WriteLine();
@@ -130,9 +168,7 @@ namespace ClasseRequisicaoPOO
                                             Console.WriteLine(" ");
                                             break;
                                         case 5:
-                                            Console.WriteLine("Comidas:\r\n 1. Moqueca de Palmito – R$ 32\r\n 2. Falafel Assado – R$ 20\r\n 3. Salada Primavera com Macarrão Konjac – R$ 25\r\n 4. Escondidinho de Inhame – R$ 18\r\n 5. Strogonoff de Cogumelos – R$ 35\r\n 6. Caçarola de legumes – R$ 22");
-                                            Console.WriteLine(" Bebidas:\r\n 7. Água – R$ 3\r\n 8. Copo de suco – R$ 7\r\n 9. Refrigerante orgânico – R$ 7\r\n 10. Cerveja vegana – R$ 9\r\n 11. Taça de vinho vegano – R$ 18");
-
+                                            ItemRestaurante();
                                             Console.WriteLine();
                                             Console.WriteLine("Escolha o item");
                                             int escolhaItemRestaurante = int.Parse(Console.ReadLine());
@@ -221,9 +257,7 @@ namespace ClasseRequisicaoPOO
                                             Console.WriteLine(" ");
                                             break;
                                         case 4:
-                                            Console.WriteLine("Comidas:\r\n 1. Pão de queijo – R$ 5\r\n 2. Bolinha de cogumelo – R$ 7\r\n 3. Rissole de palmito – R$ 7\r\n 4. Coxinha de carne de jaca – R$ 4\r\n 5. Fatia de queijo de caju – R$ 9\r\n 6. Biscoito amanteigado – R$ 3\r\n 7. Cheesecake de frutas vermelhas - R$ 15");
-                                            Console.WriteLine(" Bebidas:\r\n 8. Água – R$ 3\r\n 9. Copo de suco – R$ 7\r\n 10. Café espresso orgânico R$ 6");
-
+                                            ItemCafe();
                                             Console.WriteLine();
                                             Console.WriteLine("Escolha o item");
                                             int escolhaItemCafe = int.Parse(Console.ReadLine());
