@@ -7,9 +7,9 @@ namespace ClasseRequisicaoPOO
 {
     internal class Restaurante: Estabelecimento
     {
-        public List<Requisicao> listaRequisicao;
-        public List<Requisicao> filaDeEspera;
-        public List<Mesa> listaDeMesa;
+        private List<Requisicao> listaRequisicao;
+        private List<Requisicao> filaDeEspera;
+        private List<Mesa> listaDeMesa;
 
         public Restaurante()
         {
@@ -109,7 +109,7 @@ namespace ClasseRequisicaoPOO
                     Console.WriteLine(RetirarNaMesa(listaDeMesa[i]));
                     Console.WriteLine(verificarFila(listaDeMesa[i]));
                     Console.WriteLine(relatorioRequisicao(cliente));
-                    break;
+                    
                 }
             }
         }
@@ -122,7 +122,7 @@ namespace ClasseRequisicaoPOO
                 if (listaDeMesa[i].verificarAdequacao(cliente) == true)
                 {
                     resposta = true;
-                    break;
+                 
                 }
             }
             return resposta;
@@ -139,19 +139,18 @@ namespace ClasseRequisicaoPOO
         }
         private string ColocarNaMesa(Requisicao cliente)
         {
-            string retorno = "";
+            string retorno = null;
             if (verificarDisponibilidade(cliente) == true)
             {
                 for (int i = 0; i < listaDeMesa.Count; i++)
                 {
-                    if (listaDeMesa[i].mesaEstaOcupada() == false && listaDeMesa[i].verificarAdequacao(cliente) == true)
+                    if (listaDeMesa[i].mesaEstaOcupada() == false && listaDeMesa[i].verificarAdequacao(cliente) == true && retorno == null)
                     {
                         listaDeMesa[i].setIdCliente(cliente.getId());
                         listaDeMesa[i].setEstaOcupada(true);
                         listaDeMesa[i].clienteSentado = cliente;
                         retorno += "Cliente inserido em uma mesa\n";
-                        break;
-
+                        
                     }
                 }
             }
@@ -168,16 +167,16 @@ namespace ClasseRequisicaoPOO
         }
         public string verificarFila(Mesa mesa)
         {
-            string retorno = "";
+            string retorno = null;
             for (int i = 0; i < filaDeEspera.Count; i++)
             {
-                if (filaDeEspera[i].obterQuantPessoas() <= mesa.getCapacidade()) ;
+                if (filaDeEspera[i].obterQuantPessoas() <= mesa.getCapacidade() && retorno == null);
                 {
                     ColocarNaMesa(filaDeEspera[i]);
                     listaRequisicao.Add(filaDeEspera[i]);
                     retorno += filaDeEspera[i].getNome() + " foi direcionado da fila para o restaurante";
                     filaDeEspera.RemoveAt(i);
-                    break;
+                    
                 }
             }
             return retorno;
@@ -198,6 +197,14 @@ namespace ClasseRequisicaoPOO
         public override string fecharConta(Requisicao cliente)
         {
             return cliente.pedido.relatorio();
+        }
+        public List<Mesa> getMesa()
+        {
+            return listaDeMesa;
+        }
+        public List<Requisicao> getRequisicao()
+        {
+            return listaRequisicao;
         }
     }
 }

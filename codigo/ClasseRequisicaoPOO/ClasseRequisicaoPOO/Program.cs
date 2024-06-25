@@ -112,7 +112,7 @@ namespace ClasseRequisicaoPOO
 
                                     switch (opcaoRestaurante)
                                     {
-                                        
+
                                         case 0:
                                             break;
                                         case 1:
@@ -138,7 +138,7 @@ namespace ClasseRequisicaoPOO
                                             Console.WriteLine(restaurante.mostrarSituacao());
                                             int numDaMesa = int.Parse(Console.ReadLine());
 
-                                            var mesaEscolhidaLiberacao = restaurante.listaDeMesa.FirstOrDefault(p => p.verificarNumeroMesa() == numDaMesa);
+                                            var mesaEscolhidaLiberacao = restaurante.getMesa().FirstOrDefault(p => p.verificarNumeroMesa() == numDaMesa);
                                             if (mesaEscolhidaLiberacao == null || !mesaEscolhidaLiberacao.mesaEstaOcupada())
                                             {
                                                 Console.WriteLine("A mesa já está liberada ou não existe.");
@@ -148,7 +148,7 @@ namespace ClasseRequisicaoPOO
                                             {
                                                 int numChave = mesaEscolhidaLiberacao.getIdCliente();
 
-                                                var requisicaoCliente = restaurante.listaRequisicao.FirstOrDefault(p => p.getId() == numChave);
+                                                var requisicaoCliente = restaurante.getRequisicao().FirstOrDefault(p => p.getId() == numChave);
                                                 if (requisicaoCliente != null)
                                                 {
                                                     restaurante.requisicaoSaida(requisicaoCliente);
@@ -186,7 +186,7 @@ namespace ClasseRequisicaoPOO
                                                 int optionMesa = int.Parse(Console.ReadLine());
                                                 Console.Clear();
 
-                                                var mesaEscolhida = restaurante.listaDeMesa.FirstOrDefault(p => p.verificarNumeroMesa() == optionMesa);
+                                                var mesaEscolhida = restaurante.getMesa().FirstOrDefault(p => p.verificarNumeroMesa() == optionMesa);
 
                                                 if (mesaEscolhida != null && mesaEscolhida.mesaEstaOcupada())
                                                 {
