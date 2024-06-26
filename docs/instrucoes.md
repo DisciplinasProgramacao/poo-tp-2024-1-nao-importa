@@ -2,6 +2,8 @@
 
 LINK BPMN https://modeler.cloud.camunda.io/diagrams/9a9548e6-2904-4f85-82c0-70e7b58941d0--new-bpmn-diagram?v=742,318,1
 
+![Captura de tela 2024-06-26 204554](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127787843/aaec1184-f91f-4ddf-949a-f3512333949a)
+
 Instruções de uso:
 
 Este arquivo destina-se a conter informações relevantes para a execução correta do sistema. Aqui estão algumas orientações que podem ser úteis:
