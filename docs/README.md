@@ -2,6 +2,8 @@
 
 BPMN https://modeler.cloud.camunda.io/diagrams/9a9548e6-2904-4f85-82c0-70e7b58941d0--new-bpmn-diagram?v=2533,1249,2.456
 
+![Captura de tela 2024-06-26 204554](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127787843/6cebbd74-4205-41c7-86a1-f1cbd37bf479)
+
 A documentação do projeto é composta pelos seguintes itens: 
  - [Diagramas de classe do projeto (histórico de versões)](/docs/diagramas/) **Obrigatório**
  - [Instruções para uso](/docs/instrucoes.md) **Obrigatório**
