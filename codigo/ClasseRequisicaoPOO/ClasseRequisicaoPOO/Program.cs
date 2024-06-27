@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,77 +6,7 @@ namespace ClasseRequisicaoPOO
 {
     internal class Program
     {
-        public static void ItemCafe()
-        {
-            Console.WriteLine("Comida:");
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" 1. Pão de queijo – R$ 5\n 2. Bolinha de cogumelo – R$ 7\n 3. Rissole de palmito – R$ 7\n 4. Coxinha de carne de jaca – R$ 4\n 5. Fatia de queijo de caju – R$ 9\n 6. Biscoito amanteigado – R$ 3\n 7. Cheesecake de frutas vermelhas - R$ 15");
-            Console.ResetColor();
-            Console.WriteLine();
-            Console.WriteLine("Bebidas:");
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" 8. Água – R$ 3\n 9. Copo de suco – R$ 7\n 10. Café espresso orgânico R$ 6");
-            Console.ResetColor();
-        }
-
-        public static void ItemRestaurante()
-        {
-            Console.WriteLine("Comida:");
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" 1. Moqueca de Palmito – R$ 32\n 2. Falafel Assado – R$ 20\n 3. Salada Primavera com Macarrão Konjac – R$ 25\n 4. Escondidinho de Inhame – R$ 18\n 5. Strogonoff de Cogumelos – R$ 35\n 6. Caçarola de legumes – R$ 22");
-            Console.ResetColor();
-            Console.WriteLine();
-            Console.WriteLine("Bebidas:");
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" 7. Água – R$ 3\n 8. Copo de suco – R$ 7\n 9. Refrigerante orgânico – R$ 7\n 10. Cerveja vegana – R$ 9\n 11. Taça de vinho vegano – R$ 18");
-            Console.ResetColor();
-        }
-
-        static void menuRestaurante()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("-------------------------------------");
-            Console.ResetColor();
-            Console.WriteLine("Bem-vindo ao restaurante!");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("-------------------------------------");
-            Console.WriteLine("1. Chegada de Cliente");
-            Console.WriteLine("2. Liberar Mesa");
-            Console.WriteLine("3. Ver situação das mesas");
-            Console.WriteLine("4. Ver fila de espera");
-            Console.WriteLine("5. Adicionar item a um pedido");
-            Console.WriteLine("0. Sair");
-            Console.WriteLine("-------------------------------------");
-            Console.ResetColor();
-            Console.WriteLine();
-            Console.Write("Escolha uma opção: ");
-            Console.WriteLine();
-        }
-
-        static void menuCafe()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("-------------------------------------");
-            Console.ResetColor();
-            Console.WriteLine("Bem-vindo à Cafeteria!");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("-------------------------------------");
-            Console.WriteLine("1. Chegada de Cliente");
-            Console.WriteLine("2. Fechar conta de cliente");
-            Console.WriteLine("3. Ver situação da cafeteria");
-            Console.WriteLine("4. Adicionar item a um pedido");
-            Console.WriteLine("0. Sair");
-            Console.WriteLine("-------------------------------------");
-            Console.ResetColor();
-            Console.WriteLine();
-            Console.Write("Escolha uma opção: ");
-            Console.WriteLine();
-        }
-
+        
         static void escolhaEstabelecimento()
         {
             Console.WriteLine("Escolha o Estabelecimento que deseja utilizar");
@@ -106,13 +36,13 @@ namespace ClasseRequisicaoPOO
                             {
                                 try
                                 {
-                                    menuRestaurante();
+                                    restaurante.mostrarMenu();
                                     opcaoRestaurante = int.Parse(Console.ReadLine());
                                     Console.Clear();
 
                                     switch (opcaoRestaurante)
                                     {
-
+                                        
                                         case 0:
                                             break;
                                         case 1:
@@ -168,7 +98,8 @@ namespace ClasseRequisicaoPOO
                                             Console.WriteLine(" ");
                                             break;
                                         case 5:
-                                            ItemRestaurante();
+
+                                            restaurante.mostrarItem();
                                             Console.WriteLine();
                                             Console.WriteLine("Escolha o item");
                                             int escolhaItemRestaurante = int.Parse(Console.ReadLine());
@@ -190,7 +121,7 @@ namespace ClasseRequisicaoPOO
 
                                                 if (mesaEscolhida != null && mesaEscolhida.mesaEstaOcupada())
                                                 {
-                                                    mesaEscolhida.clienteSentado.pedido.adicionarItem(new CardapioRestaurante(escolhaItemRestaurante));
+                                                    mesaEscolhida.getclienteSentado().getPedido().adicionarItem(new CardapioRestaurante(escolhaItemRestaurante));
                                                     Console.WriteLine("Item adicionado");
                                                 }
                                                 else
@@ -221,7 +152,7 @@ namespace ClasseRequisicaoPOO
                             {
                                 try
                                 {
-                                    menuCafe();
+                                    cafeteria.mostrarMenu();
                                     opcaoCafe = int.Parse(Console.ReadLine());
                                     Console.Clear();
 
@@ -257,7 +188,8 @@ namespace ClasseRequisicaoPOO
                                             Console.WriteLine(" ");
                                             break;
                                         case 4:
-                                            ItemCafe();
+
+                                            cafeteria.mostrarItem();
                                             Console.WriteLine();
                                             Console.WriteLine("Escolha o item");
                                             int escolhaItemCafe = int.Parse(Console.ReadLine());
@@ -277,7 +209,7 @@ namespace ClasseRequisicaoPOO
 
                                             if (clienteItemCafe != null)
                                             {
-                                                clienteItemCafe.pedido.adicionarItem(new CardapioCafeteria(escolhaItemCafe));
+                                                clienteItemCafe.getPedido().adicionarItem(new CardapioCafeteria(escolhaItemCafe));
                                                 Console.WriteLine("Item adicionado");
                                             }
                                             else
