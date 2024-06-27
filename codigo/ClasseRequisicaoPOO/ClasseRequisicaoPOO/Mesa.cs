@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace ClasseRequisicaoPOO
         private int capacidade;
         private int idCliente;
         private bool estaOcupada;
-        public Requisicao clienteSentado;
+        private Requisicao clienteSentado;
 
         public Mesa(int numMesa, int capacidade)
         {
@@ -21,6 +21,7 @@ namespace ClasseRequisicaoPOO
             this.capacidade = capacidade;
             this.idCliente = -1;
             this.estaOcupada = false;
+
            
         }
         public int verificarNumeroMesa()
@@ -58,6 +59,16 @@ namespace ClasseRequisicaoPOO
 
             return resposta;
         }
-        
+
+        public Requisicao getclienteSentado()
+        {
+            return clienteSentado;
+        }
+
+        public void setclienteSentado(Requisicao clienteSentado)
+        {
+            this.clienteSentado = clienteSentado;
+        }
+
     }
 }
