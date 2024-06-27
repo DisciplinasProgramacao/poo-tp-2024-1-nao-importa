@@ -6,6 +6,15 @@ BPMN https://modeler.cloud.camunda.io/diagrams/9a9548e6-2904-4f85-82c0-70e7b5894
 
 A documentação do projeto é composta pelos seguintes itens: 
  - [Diagramas de classe do projeto (histórico de versões)](/docs/diagramas/) **Obrigatório**
+
+![Captura de tela 2024-06-27 002110](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127787843/ce28ff90-f68b-4fb3-ab33-46deb0448dd5)
+
+![Captura de tela 2024-06-27 002133](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127787843/443c6981-72b1-4916-a94b-116f748e094c)
+
+![Captura de tela 2024-06-27 002147](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127787843/3c90daa4-fffa-4235-90f7-bd7577319b33)
+
+![Captura de tela 2024-06-27 002159](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127787843/26b4d444-3930-4d2e-aee9-c4d8c3bfcc86)
+
  - [Instruções para uso](/docs/instrucoes.md) **Obrigatório**
 
 Instruções de Uso do Sistema de Cafeteria e Restaurante
