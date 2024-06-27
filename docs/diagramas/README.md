@@ -12,3 +12,7 @@ Coloque aqui todas as versões do seu diagrama de classes. Cada versão deve com
 ## Diagrama versão 03
 
 ![DiagramaTP04_POO](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127527707/973ca900-1b54-44ad-a515-ac3c31bdc98c)
+
+## Diagrama versão 04
+
+![diagramafinal](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127527707/67736085-46d4-4bd0-8845-1968612fc99f)
