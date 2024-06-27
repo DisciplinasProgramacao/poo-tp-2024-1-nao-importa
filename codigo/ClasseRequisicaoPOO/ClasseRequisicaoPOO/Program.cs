@@ -172,7 +172,7 @@ namespace ClasseRequisicaoPOO
                                             Console.WriteLine("Escolha o número do cliente para liberá-lo");
                                             Console.WriteLine(cafeteria.mostrarSituacao());
                                             int numClienteCafe = int.Parse(Console.ReadLine());
-                                            var clienteCafe = cafeteria.listaRequisicao.FirstOrDefault(p => p.getId() == numClienteCafe);
+                                            var clienteCafe = cafeteria.getRequisicao().FirstOrDefault(p => p.getId() == numClienteCafe);
                                             if (clienteCafe != null)
                                             {
                                                 cafeteria.requisicaoSaida(clienteCafe);
@@ -205,7 +205,7 @@ namespace ClasseRequisicaoPOO
                                             int numClienteItemCafe = int.Parse(Console.ReadLine());
                                             Console.Clear();
 
-                                            var clienteItemCafe = cafeteria.listaRequisicao.FirstOrDefault(p => p.getId() == numClienteItemCafe);
+                                            var clienteItemCafe = cafeteria.getRequisicao().FirstOrDefault(p => p.getId() == numClienteItemCafe);
 
                                             if (clienteItemCafe != null)
                                             {
