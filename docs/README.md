@@ -64,6 +64,12 @@ Conclusão:
 Este sistema foi projetado para proporcionar uma experiência intuitiva e eficiente para os usuários que desejam desfrutar dos serviços de uma cafeteria e restaurante. Siga as instruções acima para instalar, executar e utilizar o sistema. Em caso de dúvidas ou problemas, entre em contato com o suporte técnico.
  - 
  - [Quadro de tarefas do projeto](https://insira.aqui.sua.URL) **Obrigatório para trabalhos em grupo**
+
+![Captura de tela 2024-06-27 001624](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127787843/f0999a00-c47c-48b0-b5ab-8c626898eaa2)
+
+![Captura de tela 2024-06-27 001634](https://github.com/DisciplinasProgramacao/poo-tp-2024-1-nao-importa/assets/127787843/48ad36d2-9498-4320-9cc4-b04b7aef4742)
+
+
  - [Link para o vídeo de apresentação (edite este mesmo md para colocar sua URL)](http://insira.aqui.sua.URL) **Somente em caso de apresentação por vídeo**
 
 Para o "Quadro de Tarefas", o grupo de trabalho deve criar um Projeto no repositório e atualizar o link neste arquivo. Em caso de dúvidas sobre este processo, pergunte ao seu professor com urgência.
